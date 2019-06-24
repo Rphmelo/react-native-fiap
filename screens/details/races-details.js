@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, FlatList} from 'react-native';
+import { FlatList} from 'react-native';
 import { Container, Content, Card, CardItem, Text, Button } from 'native-base';
 import Loading from '../../components/loading';
 
-export default class Home extends React.Component {
+export default class RacesDetail extends React.Component {
   constructor(props){
     super(props);
    
@@ -13,18 +13,7 @@ export default class Home extends React.Component {
     };
 
     this.getData = this.getData.bind(this);
-    this.renderItem = this.renderItem.bind(this);
-  }
-
-  getData(season) {
-    fetch(`http://ergast.com/api/f1/${season}/races.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ 
-          data: data.MRData.RaceTable.Races,
-          loading: false
-        })
-      })
+    this.renderItemList = this.renderItemList.bind(this);
   }
 
   componentDidMount(){
@@ -33,7 +22,7 @@ export default class Home extends React.Component {
       this.getData(data.season);
   }
 
-  renderItem(item){
+  renderItemList(item){
       return (
         <CardItem footer bordered>
           <Button
@@ -57,11 +46,12 @@ export default class Home extends React.Component {
       return (
         <Container>
             <Content padder>
-              <Card>  
+              <Card>
+                <Text>Resultados:</Text>   
                 <FlatList
                     data={data}
                     keyExtractor={(item, index) => `${item.season + index}`}
-                    renderItem={({item}) => this.renderItem(item)}
+                    renderItem={({item}) => this.renderItemList(item)}
                 />
               </Card>
             </Content>

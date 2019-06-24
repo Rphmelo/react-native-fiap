@@ -1,5 +1,8 @@
-import Home from './screens/Home';
-import Races from './screens/Races';
+import Home from './screens/home';
+import Races from './screens/races';
+import RacesDetails from './screens/details/races-details';
+
+import Selection from './screens/selection';
 
 import {
   createStackNavigator,
@@ -13,6 +16,12 @@ const AppNavigator = createStackNavigator (
       },
       Races: {
         screen: Races
+      },
+      Selection: {
+        screen: Selection
+      },
+      RacesDetails: {
+        screen: RacesDetails
       }
     },
     {
@@ -23,7 +32,7 @@ const AppNavigator = createStackNavigator (
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
-          fontWeight: 'bold'
+          fontWeight: 'bold' 
         }
       }
     }

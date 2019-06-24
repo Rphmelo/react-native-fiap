@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet} from 'react-native';
-import Seasons from '../../components/Seasons';
+import Seasons from '../../components/seasons';
 import { SafeAreaView } from 'react-navigation'
 
 export default class Home extends React.Component {
@@ -12,7 +12,7 @@ export default class Home extends React.Component {
       data: {}
     };
 
-    this.navigateToRaces = this.navigateToRaces.bind(this);
+    this.navigateToSelection = this.navigateToSelection.bind(this);
   }
 
   static navigationOptions = () => {
@@ -21,8 +21,8 @@ export default class Home extends React.Component {
     }
   }
 
-  navigateToRaces(season) {
-    this.props.navigation.navigate('Races', {
+  navigateToSelection(season) {
+    this.props.navigation.navigate('Selection', {
       data: {
         season
       }
@@ -32,7 +32,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Seasons handleClick={ this.navigateToRaces }></Seasons>
+        <Seasons handleClick={ this.navigateToSelection }></Seasons>
       </SafeAreaView>
     );
   }
