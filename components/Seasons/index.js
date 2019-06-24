@@ -21,7 +21,6 @@ class Seasons extends PureComponent {
     renderSeasons() {
         let items = [];
         const { seasons } = this.state.data;
-        console.log(this.state);
         for (let i = 0; seasons.length > i; i++) {
             const years = seasons[i].season;
             items.push(
@@ -41,7 +40,6 @@ class Seasons extends PureComponent {
 
     getData() {
         let limit = 60;
-
         fetch(`http://ergast.com/api/f1/seasons.json?limit=${limit}`)
           .then((response) => response.json())
           .then((data) => {

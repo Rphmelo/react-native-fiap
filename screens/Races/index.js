@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList} from 'react-native';
+import { FlatList} from 'react-native';
 import { Container, Content, Card, CardItem, Text, Button } from 'native-base';
 import Loading from '../../components/loading';
 
@@ -14,6 +14,7 @@ export default class Home extends React.Component {
 
     this.getData = this.getData.bind(this);
     this.renderItem = this.renderItem.bind(this);
+    this.navigateToRacesDetails = this.navigateToRacesDetails.bind(this);
   }
 
   getData(season) {
@@ -27,6 +28,12 @@ export default class Home extends React.Component {
       })
   }
 
+  navigateToRacesDetails(item) {
+    this.props.navigation.navigate('RacesDetails', {
+      data: item
+    });
+  }
+
   componentDidMount(){
       const { navigation } = this.props;
       const data = navigation.getParam('data');
@@ -37,7 +44,7 @@ export default class Home extends React.Component {
       return (
         <CardItem footer bordered>
           <Button
-              onPress={() => this.navigateToDetail(item)}
+              onPress={() => this.navigateToRacesDetails(item)}
               >
               <Text>
                   {item.raceName}
